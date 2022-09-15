@@ -3,7 +3,7 @@ import IconSet from './IconSet';
 import Logo from './Logo';
 import NavMobile from './NavMobile';
 
-const headerDetails = { logoName: 'blog-site.vercel.app' };
+const headerDetails = { logoName: 'Blog Site' };
 
 const headerNavLinks = [
     { href: '/', title: 'home' },
@@ -27,7 +27,7 @@ function Header() {
                         <IconSet className="flex lg:hidden gap-4 items-center w-[245px] md:w-max flex-wrap max-h-10 overflow-hidden" />
 
                         {/* logo */}
-                        <Link href="/" aria-label="blog-site.vercel.app">
+                        <Link href="/" aria-label="blog-site-frontend.vercel.app">
                             <div className="flex items-center cursor-pointer max-w-max">
                                 <Logo />
 

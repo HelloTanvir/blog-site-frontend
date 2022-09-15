@@ -25,7 +25,7 @@ function Footer() {
             {/* copyright and year */}
             <div className="flex items-center justify-center py-8 sm:flex-row">
                 <p className="mb-4 text-sm text-gray-500">
-                    <Link href="/">blog-site.vercel.app</Link>
+                    <Link href="/">blog-site-frontend.vercel.app</Link>
                     {` • `}
                     {`© ${new Date().getFullYear()}`} {` • `}All rights reserved.
                 </p>
