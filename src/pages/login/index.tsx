@@ -24,8 +24,8 @@ const Login: NextPage = () => {
     return (
         <div>
             <Head>
-                <title>Devmite.com | Login</title>
-                <link rel="icon" href="/devicon.ico" />
+                <title>Blog site</title>
+                <link rel="icon" href="/fabicon.svg" />
             </Head>
 
             <main

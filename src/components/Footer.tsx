@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import React from 'react';
 import SubscribeByEmail from './SubscribeByEmail';
 
 function Footer() {
@@ -26,7 +25,7 @@ function Footer() {
             {/* copyright and year */}
             <div className="flex items-center justify-center py-8 sm:flex-row">
                 <p className="mb-4 text-sm text-gray-500">
-                    <Link href="/">Devmite.com</Link>
+                    <Link href="/">blog-site.vercel.app</Link>
                     {` • `}
                     {`© ${new Date().getFullYear()}`} {` • `}All rights reserved.
                 </p>

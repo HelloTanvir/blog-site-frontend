@@ -16,8 +16,8 @@ export default function Home() {
     return (
         <div>
             <Head>
-                <title>Devmite.com</title>
-                <link rel="icon" href="/devicon.ico" />
+                <title>Blog site</title>
+                <link rel="icon" href="/fabicon.svg" />
             </Head>
 
             {/* featured posts slider */}

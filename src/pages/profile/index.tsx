@@ -5,8 +5,8 @@ import bookmarkedPosts from '../../data/bookmarkedPosts';
 const Profile = () => (
     <div>
         <Head>
-            <title>Devmite.com | Profile</title>
-            <link rel="icon" href="/devicon.ico" />
+            <title>Blog site</title>
+            <link rel="icon" href="/fabicon.svg" />
         </Head>
 
         <div className="container flex flex-col gap-8">

@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import React from 'react';
 import SinglePost from '../../components/SinglePost';
 import relatedPosts from '../../data/relatedPosts';
 
@@ -23,8 +22,8 @@ const Post = () => {
     return (
         <div>
             <Head>
-                <title>Devmite.com</title>
-                <link rel="icon" href="/devicon.ico" />
+                <title>Blog site</title>
+                <link rel="icon" href="/fabicon.svg" />
             </Head>
 
             <SinglePost
