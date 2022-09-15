@@ -28,7 +28,7 @@ function Header() {
 
                         {/* logo */}
                         <Link href="/" aria-label="blog-site-frontend.vercel.app">
-                            <div className="flex items-center cursor-pointer max-w-max">
+                            <div className="flex items-center gap-3 cursor-pointer max-w-max">
                                 <Logo />
 
                                 <div className="text-2xl font-semibold text-gray-900 dark:text-gray-200 hover:text-[#649130] duration-200">
