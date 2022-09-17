@@ -26,27 +26,25 @@ const Slider = () => {
         },
     });
 
-    const [items, setItems] = useState([{ id: 'empty-post', renderItem: null }]);
+    let items = [{ id: 'empty-post', renderItem: null }];
 
     if (data && data.posts && data.posts.length > 0) {
-        setItems(() =>
-            data.posts.map((post: Data, index) => ({
-                id: `FeaturedPost-${index + 1}`,
-                renderItem: (
-                    <FeaturedPost
-                        imgSrc={post.image}
-                        caption={post.caption}
-                        title={post.title}
-                        text={post.body}
-                        author={post.authorId}
-                        postCategory={post.postCategory}
-                        date={post.createdAt}
-                        authorUrl="#"
-                        categoryUrl="#"
-                    />
-                ),
-            }))
-        );
+        items = data.posts.map((post: Data, index) => ({
+            id: `FeaturedPost-${index + 1}`,
+            renderItem: (
+                <FeaturedPost
+                    imgSrc={post.image}
+                    caption={post.caption}
+                    title={post.title}
+                    text={post.body}
+                    author={post.authorId}
+                    postCategory={post.postCategory}
+                    date={post.createdAt}
+                    authorUrl="#"
+                    categoryUrl="#"
+                />
+            ),
+        }));
     }
 
     const {
