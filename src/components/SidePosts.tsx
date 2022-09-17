@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import React from 'react';
 import { MdKeyboardArrowRight } from 'react-icons/md';
 import PostMetaData from './PostMetaData';
 
@@ -16,9 +15,9 @@ interface Props {
 }
 
 const SidePosts = ({ posts, postCaption }: Props) => (
-    <div className="flex flex-col gap-[30px]">
+    <div className="flex flex-col gap-[28px]">
         {/* section title */}
-        <h2 className="text-xl inline-flex max-w-max mb-5 border-b border-[#222] capitalize">
+        <h2 className="text-xl inline-flex max-w-max border-b border-[#222] capitalize">
             {`${postCaption} Posts`}
         </h2>
 
