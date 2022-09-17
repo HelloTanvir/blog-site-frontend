@@ -12,7 +12,7 @@ interface Data {
     caption: string;
     title: string;
     body: string;
-    authorId: string;
+    authorName: string;
     postCategory: string;
     createdAt: string;
 }
@@ -37,7 +37,7 @@ const Slider = () => {
                     caption={post.caption}
                     title={post.title}
                     text={post.body}
-                    author={post.authorId}
+                    author={post.authorName}
                     postCategory={post.postCategory}
                     date={post.createdAt}
                     authorUrl="#"

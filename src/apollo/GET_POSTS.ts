@@ -9,7 +9,7 @@ export const GET_POSTS = gql`
             caption
             image
             postCategory
-            authorId
+            authorName
             createdAt
         }
     }
