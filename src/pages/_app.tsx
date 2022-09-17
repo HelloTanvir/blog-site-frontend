@@ -2,7 +2,7 @@ import { ApolloProvider } from '@apollo/client';
 import { ThemeProvider } from 'next-themes';
 import type { AppProps } from 'next/app';
 import { Provider as StoreProvider } from 'react-redux';
-import client from '../apollo/client';
+import { client } from '../apollo';
 import Layout from '../components/Layout';
 import store from '../store/store';
 import '../styles/globals.css';

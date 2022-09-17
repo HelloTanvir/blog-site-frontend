@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
 import PostMetaData from './PostMetaData';
 
 interface Props {
@@ -28,9 +27,11 @@ const FeaturedPost = ({
 }: Props) => (
     <div className="container flex flex-col lg:flex-row">
         {/* image container */}
-        <div className="relative flex-1 min-h-[300px]">
-            <Image src={imgSrc} layout="fill" objectFit="cover" />
-        </div>
+        {imgSrc && (
+            <div className="relative flex-1 min-h-[300px]">
+                <Image src={imgSrc} layout="fill" objectFit="cover" />
+            </div>
+        )}
 
         {/* content */}
         <div className="flex-1 p-6 lg:p-[50px] flex flex-col bg-[#f8f9fa] dark:bg-[#141414] gap-2">
