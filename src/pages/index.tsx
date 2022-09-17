@@ -24,7 +24,7 @@ export default function Home() {
             <Slider />
 
             {/* editor's pick and trending */}
-            <div className="container mt-[100px] gap-[30px] flex flex-col lg:flex-row">
+            <div className="container gap-[30px] flex flex-col lg:flex-row">
                 {/* editor's pick */}
                 <EditorsPickedPosts />
 
