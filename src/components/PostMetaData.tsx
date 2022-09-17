@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
 import { BsBookmarks, BsBookmarksFill } from 'react-icons/bs';
 
 interface Props {
@@ -55,7 +54,7 @@ const PostMetaData = ({
 
             <div className="flex items-center gap-1">
                 {/* date */}
-                <span className="font-medium">{date}</span>
+                <span className="font-medium">{new Date(+date).toDateString()}</span>
 
                 {` • `}
 

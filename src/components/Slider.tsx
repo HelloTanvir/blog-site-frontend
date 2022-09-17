@@ -12,7 +12,7 @@ interface Data {
     caption: string;
     title: string;
     body: string;
-    authorId: string;
+    authorName: string;
     postCategory: string;
     createdAt: string;
 }
@@ -26,27 +26,25 @@ const Slider = () => {
         },
     });
 
-    const [items, setItems] = useState([{ id: 'empty-post', renderItem: null }]);
+    let items = [{ id: 'empty-post', renderItem: null }];
 
     if (data && data.posts && data.posts.length > 0) {
-        setItems(() =>
-            data.posts.map((post: Data, index) => ({
-                id: `FeaturedPost-${index + 1}`,
-                renderItem: (
-                    <FeaturedPost
-                        imgSrc={post.image}
-                        caption={post.caption}
-                        title={post.title}
-                        text={post.body}
-                        author={post.authorId}
-                        postCategory={post.postCategory}
-                        date={post.createdAt}
-                        authorUrl="#"
-                        categoryUrl="#"
-                    />
-                ),
-            }))
-        );
+        items = data.posts.map((post: Data, index) => ({
+            id: `FeaturedPost-${index + 1}`,
+            renderItem: (
+                <FeaturedPost
+                    imgSrc={post.image}
+                    caption={post.caption}
+                    title={post.title}
+                    text={post.body}
+                    author={post.authorName}
+                    postCategory={post.postCategory}
+                    date={post.createdAt}
+                    authorUrl="#"
+                    categoryUrl="#"
+                />
+            ),
+        }));
     }
 
     const {
@@ -86,7 +84,7 @@ const Slider = () => {
     if (items[0].id === 'empty-post') return null;
 
     return (
-        <div className="flex flex-col gap-9 md:gap-[100px] lg:pointer-events-auto pointer-events-none">
+        <div className="flex flex-col gap-9 md:gap-[100px] lg:pointer-events-auto pointer-events-none mb-[100px]">
             <div className="relative">
                 <AiOutlineArrowLeft
                     className="absolute left-0 z-30 hidden p-2 text-4xl text-gray-600 -translate-y-1/2 bg-white dark:bg-[#121212] cursor-pointer top-1/2 lg:block"
