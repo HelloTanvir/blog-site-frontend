@@ -1,27 +1,53 @@
+import { useQuery } from '@apollo/client';
 import { useEffect, useState } from 'react';
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai';
 import { CgBorderStyleSolid } from 'react-icons/cg';
 import { useSpringCarousel } from 'react-spring-carousel-js';
-import featuredPosts from '../data/featuredPosts';
+import { GET_POSTS } from '../apollo';
 import FeaturedPost from './FeaturedPost';
 
+interface Data {
+    id: string;
+    image: string;
+    caption: string;
+    title: string;
+    body: string;
+    authorId: string;
+    postCategory: string;
+    createdAt: string;
+}
+
 const Slider = () => {
-    const items = featuredPosts.map((post, index) => ({
-        id: `FeaturedPost-${index + 1}`,
-        renderItem: (
-            <FeaturedPost
-                imgSrc={post.imgSrc}
-                caption={post.caption}
-                title={post.title}
-                text={post.text}
-                author={post.author}
-                postCategory={post.postCategory}
-                date={post.date}
-                authorUrl={post.authorUrl}
-                categoryUrl={post.categoryUrl}
-            />
-        ),
-    }));
+    const { loading, error, data } = useQuery(GET_POSTS, {
+        variables: {
+            input: {
+                isFeatured: true,
+            },
+        },
+    });
+
+    const [items, setItems] = useState([{ id: 'empty-post', renderItem: null }]);
+
+    if (data && data.posts && data.posts.length > 0) {
+        setItems(() =>
+            data.posts.map((post: Data, index) => ({
+                id: `FeaturedPost-${index + 1}`,
+                renderItem: (
+                    <FeaturedPost
+                        imgSrc={post.image}
+                        caption={post.caption}
+                        title={post.title}
+                        text={post.body}
+                        author={post.authorId}
+                        postCategory={post.postCategory}
+                        date={post.createdAt}
+                        authorUrl="#"
+                        categoryUrl="#"
+                    />
+                ),
+            }))
+        );
+    }
 
     const {
         carouselFragment,
@@ -32,24 +58,32 @@ const Slider = () => {
     } = useSpringCarousel({
         withLoop: true,
         items,
+        itemsPerSlide: 1,
     });
 
-    const [activeSlide, setActiveSlide] = useState(items[0].id);
+    const [activeSlide, setActiveSlide] = useState(items[0]?.id);
 
     const handleSlide = (id: string) => {
         setActiveSlide(id);
         slideToItem(id);
     };
 
+    // eslint-disable-next-line consistent-return
     useEffect(() => {
-        const interval = setInterval(() => {
-            slideToNextItem();
-            const { id } = getCurrentActiveItem();
-            setActiveSlide(id);
-        }, 3000);
+        if (getCurrentActiveItem().id !== 'empty-post') {
+            const interval = setInterval(() => {
+                slideToNextItem();
+                const { id } = getCurrentActiveItem();
+                setActiveSlide(id);
+            }, 3000);
 
-        return () => clearInterval(interval);
+            return () => clearInterval(interval);
+        }
     }, [slideToNextItem, getCurrentActiveItem]);
+
+    if (loading) return 'Loading...';
+    if (error) return `Error! ${error.message}`;
+    if (items[0].id === 'empty-post') return null;
 
     return (
         <div className="flex flex-col gap-9 md:gap-[100px] lg:pointer-events-auto pointer-events-none">
