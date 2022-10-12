@@ -6,10 +6,10 @@ const RegistrationFields = [
         placeholder: 'Enter your name',
     },
     {
-        label: 'Address',
-        type: 'text',
-        name: 'address',
-        placeholder: 'Enter your address',
+        label: 'Profile Image',
+        type: 'file',
+        name: 'image',
+        placeholder: 'Upload your profile image',
     },
     {
         label: 'Email',
