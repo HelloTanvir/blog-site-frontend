@@ -1,14 +1,18 @@
 // import { yupResolver } from '@hookform/resolvers/yup/dist/yup.js';
+import { useMutation } from '@apollo/client';
 import { yupResolver } from '@hookform/resolvers/yup';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
+import { SIGNUP } from '../../apollo';
 import TextField from '../../components/TextField';
 import RegistrationFields from '../../utils/RegistrationFields';
 import RegistrationSchema from '../../utils/RegistrationSchema';
 
 const Registration: NextPage = () => {
+    const [signup, { data, loading, error }] = useMutation(SIGNUP);
+
     const {
         register,
         handleSubmit,
@@ -17,9 +21,28 @@ const Registration: NextPage = () => {
         resolver: yupResolver(RegistrationSchema),
     });
 
-    const submitForm = async (data: { [key: string]: any }) => {
-        console.log({ registrationData: data });
+    const submitForm = async (registrationData: { [key: string]: any }) => {
+        console.log({
+            registrationData: {
+                ...registrationData,
+                image: registrationData.image[0],
+            },
+        });
+
+        await signup({
+            variables: {
+                input: {
+                    ...registrationData,
+                    image: registrationData.image[0],
+                },
+            },
+        });
+
+        console.log({ data, loading, error });
     };
+
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error: {error.message}</p>;
 
     return (
         <div>
