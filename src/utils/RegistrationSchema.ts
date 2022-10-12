@@ -6,7 +6,7 @@ const RegistrationSchema = yup.object().shape({
         .min(3, 'Name should be at least 3 characters long')
         .required('Name is required'),
 
-    image: yup.mixed().required('Address is required'),
+    image: yup.mixed().required('Profile image is required'),
 
     email: yup.string().email().required('Email is required'),
 
